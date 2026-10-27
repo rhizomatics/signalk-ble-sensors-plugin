@@ -1,4 +1,4 @@
-# signalk-bluetti-plugin Development
+# signalk-ble-sensors-plugin Development
 
 ## Release
 

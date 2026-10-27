@@ -1,3 +1,6 @@
+# [0.1.5]
+Package moved to [Rhizomatics](https://www.rhizomatics.org.uk/sailing/)
+
 # [0.1.4]
 
 Improved handling of Switchbot (Woan) thermometers with rolling codes in payload

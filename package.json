@@ -1,6 +1,6 @@
 {
   "name": "signalk-ble-sensors-plugin",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Passive BLE sensor listening for SignalK (SwitchBot, RuuviTag, and others) via the SignalK BLE Manager API — no GATT connection required.",
   "keywords": [
     "ble",
@@ -17,15 +17,15 @@
     "switchbot",
     "temperature"
   ],
-  "homepage": "https://github.com/SY-Sea-Jade/signalk-ble-sensors-plugin",
+  "homepage": "https://github.com/rhizomatics/signalk-ble-sensors-plugin",
   "bugs": {
-    "url": "https://github.com/SY-Sea-Jade/signalk-ble-sensors-plugin/issues"
+    "url": "https://github.com/rhizomatics/signalk-ble-sensors-plugin/issues"
   },
   "license": "Apache-2.0",
   "author": "Jey Burrows",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SY-Sea-Jade/signalk-ble-sensors-plugin.git"
+    "url": "git+https://github.com/rhizomatics/signalk-ble-sensors-plugin.git"
   },
   "files": [
     "index.js",
@@ -44,8 +44,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "oxfmt": "^0.61.0",
-    "oxlint": "^1.75.0"
+    "oxfmt": "^0.70.0",
+    "oxlint": "^1.85.0"
   },
   "engines": {
     "node": ">=22.0.0",
