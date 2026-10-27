@@ -44,7 +44,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "oxfmt": "^0.70.0",
+    "oxfmt": "^0.74.0",
     "oxlint": "^1.85.0"
   },
   "engines": {
