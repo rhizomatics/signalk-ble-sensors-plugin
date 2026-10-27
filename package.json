@@ -30,6 +30,7 @@
   "files": [
     "index.js",
     "lib/",
+    "docs/assets/",
     "README.md",
     "CHANGELOG.md"
   ],
@@ -44,7 +45,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "oxfmt": "^0.70.0",
+    "oxfmt": "^0.75.0",
     "oxlint": "^1.85.0"
   },
   "engines": {
@@ -52,7 +53,8 @@
     "signalk-server": ">=2.31.0"
   },
   "signalk": {
-    "displayName": "BLE Sensors (Passive)"
+    "displayName": "BLE Sensors (Passive)",
+    "appIcon": "docs/assets/icon.svg"
   },
   "signalk-plugin-enabled-by-default": false
 }
