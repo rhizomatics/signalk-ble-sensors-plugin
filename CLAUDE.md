@@ -89,7 +89,7 @@ zone already resolves to `outside`, to avoid publishing the identical path twice
   whose `identify()` claims the advertisement, or `null`.
 
 - **`lib/decoders/*.js`** — One module per sensor model/family, each a pure `{ id, name, domain, identify(adv),
-decode(adv) }` with no BLE or SignalK dependencies (trivially unit-testable against synthetic buffers).
+  decode(adv) }` with no BLE or SignalK dependencies (trivially unit-testable against synthetic buffers).
   Currently: `switchbot-th` (SwitchBot Meter / WoSensorTH), `switchbot-meter-plus` (SwitchBot Meter Plus),
   `ruuvitag` (RuuviTag data format 5), `xiaomi-atc` (Xiaomi LYWSD03MMC running the pvvx/atc1441 custom
   firmware), `govee` (Govee H5074/H5075). SwitchBot and RuuviTag are the actively-used/best-tested pair;

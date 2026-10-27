@@ -4,7 +4,6 @@ This is intended as stop-gap until `bt-sensors-plugin-sk` has SignalK BLE Manage
 
 Passive BLE sensor listening for [SignalK](https://signalk.org/) — reads temperature, humidity and battery data broadcast by cheap, popular BLE sensors and republishes it to SignalK paths, without ever opening a Bluetooth connection to the device. Relies only on _BLE Manager_, so requires SignalK v2.31 or above with v2.34+ recommended.
 
-
 ## How it works
 
 Sensors like these broadcast their readings in plain BLE advertisement packets a few times a second. This plugin listens to that broadcast stream through the SignalK server's **BLE Manager API** and decodes it — there's no pairing, no GATT connection, and no battery drain on the sensor from being connected to.
