@@ -1,6 +1,7 @@
-# [0.1.5]
+# [1.0.0]
 
-Package moved to [Rhizomatics](https://www.rhizomatics.org.uk/sailing/)
+- Package moved to [Rhizomatics](https://www.rhizomatics.org.uk/sailing/)
+- Choice of outdoor pressure sensors now limited to ones that have pressure (RuuviTags all have pressure in data structure, however the waterproof Pro tags send a placeholder only).
 
 # [0.1.4]
 

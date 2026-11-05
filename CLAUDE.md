@@ -94,9 +94,10 @@ zone already resolves to `outside`, to avoid publishing the identical path twice
   `ruuvitag` (RuuviTag data format 5), `xiaomi-atc` (Xiaomi LYWSD03MMC running the pvvx/atc1441 custom
   firmware), `govee` (Govee H5074/H5075). SwitchBot and RuuviTag are the actively-used/best-tested pair;
   the rest are best-effort community coverage. A decoder may also declare `providesPressure: true` (a
-  static capability flag, not derived from what a given device has actually reported — some RuuviTag
-  hardware variants, e.g. the Pro IP68, never emit a pressure value at all) — see `outsidePressureSource`
-  above.
+  model-family capability flag — some RuuviTag hardware variants, e.g. the Pro IP68, never emit a pressure
+  value at all, so `sensor-manager` decodes every recognized device's advertisements and only marks a device
+  `providesPressure` (sticky for the session) once it has actually decoded a pressure value) — see
+  `outsidePressureSource` above.
 
 - **`lib/path-mapper.js`** — SignalK path templates, units, and battery-low zones, plus the `{zone}`/
   `{sensorId}` substitution and delta-building logic. The path/unit conventions themselves (e.g.
@@ -144,7 +145,7 @@ doesn't try to infer either.
 
 Above the `sensors` array sits one plugin-level field, `outsidePressureSource`: an optional `enum`/`enumNames`
 dropdown built the same way as the per-item `mac` field, but filtered to recognized devices whose decoder
-declares `providesPressure`. Picking a MAC here doesn't register it — it still needs its own `sensors` array
+declares `providesPressure` _and_ that have actually reported a pressure value this session. Picking a MAC here doesn't register it — it still needs its own `sensors` array
 entry — so the schema description says so explicitly.
 
 ### Why BLE-Manager-only

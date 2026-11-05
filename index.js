@@ -114,7 +114,7 @@ function buildSchema(recognized, configured = [], outsidePressureSourceMac = nul
         type: "string",
         title: "Outside pressure source",
         description:
-          "Optional. Also publish this sensor's pressure reading to environment.outside.pressure — the SignalK-standard path other plugins (e.g. barometer trend) expect — in addition to its own environment.<zone>.pressure. Only sensors capable of measuring pressure (e.g. RuuviTag) are listed here; the device must also be added as a registered sensor below to actually be read.",
+          "Optional. Also publish this sensor's pressure reading to environment.outside.pressure — the SignalK-standard path other plugins (e.g. barometer trend) expect — in addition to its own environment.<zone>.pressure. Only sensors that have actually reported a pressure reading since the plugin started (e.g. a RuuviTag, but not the pressure-less RuuviTag Pro IP68) are listed here; the device must also be added as a registered sensor below to actually be read.",
         enum: hasPressureCapable ? ["", ...pressureCapable.map((d) => d.mac)] : [""],
         enumNames: hasPressureCapable
           ? ["(none)", ...pressureCapable.map(formatDeviceLabel)]
