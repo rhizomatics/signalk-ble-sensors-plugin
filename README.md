@@ -1,5 +1,11 @@
 # signalk-ble-sensors-plugin
 
+[![npm version](https://img.shields.io/npm/v/@rhizomatics/signalk-ble-sensors-plugin.svg)](https://www.npmjs.com/package/@rhizomatics/signalk-ble-sensors-plugin)
+[![npm downloads](https://img.shields.io/npm/dm/@rhizomatics/signalk-ble-sensors-plugin.svg)](https://www.npmjs.com/package/@rhizomatics/signalk-ble-sensors-plugin)
+[![code style: oxfmt](https://img.shields.io/badge/code_style-oxfmt-blue.svg)](https://github.com)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/rhizomatics/signalk-ble-sensors-plugin./blob/main/LICENSE)
+[![boat tech directory](https://boat-tech-directory.rhizomatics.org.uk/images/badge.svg)](https://boat-tech-directory.rhizomatics.org.uk)
+
 This is a limited replacement for `bt-sensors-plugin-sk` that has SignalK BLE Manager support, with only a few sensors known to work and passive only BLE integration. It may work for other sensors not listed here, and PRs welcome to add or correct support.
 
 Passive BLE sensor listening for [SignalK](https://signalk.org/) — reads temperature, humidity and battery data broadcast by cheap, popular BLE sensors and republishes it to SignalK paths, without ever opening a Bluetooth connection to the device. Relies only on _BLE Manager_, so requires SignalK v2.31 or above with v2.34+ recommended.
