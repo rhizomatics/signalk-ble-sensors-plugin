@@ -1,6 +1,6 @@
 # signalk-ble-sensors-plugin
 
-This is intended as stop-gap until `bt-sensors-plugin-sk` has SignalK BLE Manager support, hence it has limited sensor support, only passive BLE integration and requires the BLE Manager.
+This is a limited replacement for `bt-sensors-plugin-sk` that has SignalK BLE Manager support, with only a few sensors known to work and passive only BLE integration. It may work for other sensors not listed here, and PRs welcome to add or correct support.
 
 Passive BLE sensor listening for [SignalK](https://signalk.org/) — reads temperature, humidity and battery data broadcast by cheap, popular BLE sensors and republishes it to SignalK paths, without ever opening a Bluetooth connection to the device. Relies only on _BLE Manager_, so requires SignalK v2.31 or above with v2.34+ recommended.
 
