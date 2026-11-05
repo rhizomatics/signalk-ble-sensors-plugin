@@ -1,3 +1,6 @@
+# [1.0.1]
+No code change, re-release only for automated build.
+
 # [1.0.0]
 
 - Package moved to [Rhizomatics](https://www.rhizomatics.org.uk/sailing/)
