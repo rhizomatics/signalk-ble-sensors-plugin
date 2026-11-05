@@ -1,5 +1,10 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
+# mise installs node under $HOME (a path pre-commit refuses to auto-detect as "system"), so without
+# this pre-commit falls back to nodeenv's "latest" node, which currently resolves to an `-alpha`
+# release nodeenv can't parse (ValueError: invalid literal for int() ... '0-alpha').
+default_language_version:
+  node: system
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
