@@ -4,7 +4,8 @@
 #
 # One-off setup on npmjs.com (package Settings -> Trusted Publisher):
 #   provider: GitHub Actions, org: rhizomatics, repo: signalk-ble-sensors-plugin,
-#   workflow: release.yml, environment: npm
+#   workflow: release.yml, environment: npm, allowed action: stage publish
+# Each release is staged, not published: approve it on npmjs.com to make it live.
 name: Release
 
 on:
@@ -34,7 +35,7 @@ jobs:
           node-version: "24"
           registry-url: "https://registry.npmjs.org"
 
-      # Trusted publishing needs npm >= 11.5.1.
+      # Staged publishing needs npm >= 11.15.0.
       - run: npm install -g npm@latest
 
       - name: Check release tag matches package.json version
@@ -52,12 +53,16 @@ jobs:
       - run: npm run fmt:check
       - run: npm test
 
-      - name: Publish
+      # The trusted publisher is stage-only: a plain `npm publish` is refused with
+      # E403 "OIDC permission denied for this action". The staged version goes
+      # live once a maintainer approves it (npmjs.com Staged Packages tab, or
+      # `npm stage approve <stage-id>` with 2FA).
+      - name: Stage publish
         env:
           PRERELEASE: ${{ github.event.release.prerelease }}
         run: |
           if [ "$PRERELEASE" = "true" ]; then
-            npm publish --access public --tag next
+            npm stage publish --access public --tag next
           else
-            npm publish --access public
+            npm stage publish --access public
           fi

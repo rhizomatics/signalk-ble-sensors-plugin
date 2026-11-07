@@ -1,7 +1,3 @@
-# [1.0.3]
-
-- Github release build, no code change
-
 # [1.0.2]
 
 - SwitchBot Meter Plus: temperature was wrong when the meter's display was set to Fahrenheit (e.g. 22.7°C published as -5.2°C). The broadcast value is always Celsius; the flag only says which unit the display shows
