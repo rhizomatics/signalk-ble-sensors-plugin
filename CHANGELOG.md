@@ -1,3 +1,8 @@
+# [1.0.2]
+
+- SwitchBot Meter Plus: temperature was wrong when the meter's display was set to Fahrenheit (e.g. 22.7°C published as -5.2°C). The broadcast value is always Celsius; the flag only says which unit the display shows
+- Xiaomi ATC: sensors using the `atc1441` advertising format were decoded with the pvvx layout and published nonsense temperatures. Both formats are now decoded, and BTHome payloads (not supported yet) are no longer misread as either
+
 # [1.0.1]
 
 No code change, re-release only for automated build.
