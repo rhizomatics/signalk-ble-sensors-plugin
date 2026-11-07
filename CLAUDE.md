@@ -138,8 +138,8 @@ entries have no `sensorTypeName` (only learned by decoding an actual advertiseme
 falls back to "not seen since restart" — and default `providesPressure: false`, so they can't wrongly
 appear in the pressure-source dropdown until re-observed confirms what they actually are.
 
-A registered sensor's `zone` (used in `environment.<zone>.*` paths) and `name` (used as `$source` and,
-sanitized/lowercased, in `sensors.<name>.*` paths — so two registered sensors sharing a name will collide
+A registered sensor's `zone` (used in `environment.<zone>.*` paths) and `name` (used, sanitized/lowercased, in `sensors.<name>.*` paths; `$source` is
+`<plugin id>.<sensor type id>` — so two registered sensors sharing a name will collide
 on these paths) are free-text fields the user fills in after picking the MAC — the plugin
 doesn't try to infer either.
 

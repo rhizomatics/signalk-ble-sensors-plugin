@@ -140,14 +140,22 @@ function buildSchema(recognized, configured = [], outsidePressureSourceMac = nul
               type: "string",
               title: "Name override",
               description:
-                "Used as the SignalK $source and in generated sensor paths. Defaults to the device's advertised name if it has one, otherwise its sensor type (e.g. 'SwitchBot Meter') — worth setting explicitly.",
+                "Used in sensors.<name>.* paths (the $source is the plugin id plus the sensor type). Defaults to the device's advertised name if it has one, otherwise its sensor type (e.g. 'SwitchBot Meter') — worth setting explicitly.",
             },
             zone: {
               type: "string",
               title: "Zone / location",
               description:
-                "Used in environment.<zone>.* paths, e.g. 'cabin', 'engine', 'fridge'. Dots nest into sub-paths, e.g. 'inside.mainCabin' becomes environment.inside.mainCabin.*.",
-              examples: ["inside", "outside", "galley", "fridge", "cabin", "engine", "deck", "cockpit", "inside.mainCabin"],
+                "Used in environment.<zone>.* paths. The SignalK spec puts indoor zones under 'inside', e.g. 'inside.mainCabin' becomes environment.inside.mainCabin.*; use 'outside' for the outside air.",
+              examples: [
+                "outside",
+                "inside",
+                "inside.mainCabin",
+                "inside.galley",
+                "inside.refrigerator",
+                "inside.freezer",
+                "inside.engineRoom",
+              ],
             },
             enabled: { type: "boolean", title: "Enabled", default: true },
           },

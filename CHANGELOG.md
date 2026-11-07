@@ -2,6 +2,10 @@
 
 - SwitchBot Meter Plus: temperature was wrong when the meter's display was set to Fahrenheit (e.g. 22.7°C published as -5.2°C). The broadcast value is always Celsius; the flag only says which unit the display shows
 - Xiaomi ATC: sensors using the `atc1441` advertising format were decoded with the pvvx layout and published nonsense temperatures. Both formats are now decoded, and BTHome payloads (not supported yet) are no longer misread as either
+# [Unreleased]
+
+- **Path change:** humidity is now published to `environment.<zone>.relativeHumidity`, the SignalK spec path (`humidity` is deprecated in the spec). Update any dashboard or alarm that reads `environment.<zone>.humidity`
+- Zone examples in the config screen and README now follow the spec's `inside.<zone>` / `outside` layout. Existing zones are unchanged
 
 # [1.0.1]
 
