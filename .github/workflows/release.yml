@@ -59,12 +59,23 @@ jobs:
       # E403 "OIDC permission denied for this action". The staged version goes
       # live once a maintainer approves it (npmjs.com Staged Packages tab, or
       # `npm stage approve <stage-id>` with 2FA).
+      # dist-tag follows the SignalK plugins' convention: alpha/beta/rc in the
+      # release tag picks that dist-tag; any other GitHub pre-release goes to
+      # `next` (npm needs an explicit tag for prerelease versions).
       - name: Stage publish
         env:
+          TAG: ${{ github.event.release.tag_name }}
           PRERELEASE: ${{ github.event.release.prerelease }}
         run: |
-          if [ "$PRERELEASE" = "true" ]; then
-            npm stage publish --provenance --access public --tag next --loglevel verbose
+          if [[ "$TAG" == *alpha* ]]; then
+            dist_tag=alpha
+          elif [[ "$TAG" == *beta* ]]; then
+            dist_tag=beta
+          elif [[ "$TAG" == *rc* ]]; then
+            dist_tag=rc
+          elif [ "$PRERELEASE" = "true" ]; then
+            dist_tag=next
           else
-            npm stage publish --provenance --access public --loglevel verbose
+            dist_tag=latest
           fi
+          npm stage publish --provenance --access public --tag "$dist_tag"
