@@ -1,3 +1,8 @@
+# [Unreleased]
+
+- **Path change:** humidity is now published to `environment.<zone>.relativeHumidity`, the SignalK spec path (`humidity` is deprecated in the spec). Update any dashboard or alarm that reads `environment.<zone>.humidity`
+- Zone examples in the config screen and README now follow the spec's `inside.<zone>` / `outside` layout. Existing zones are unchanged
+
 # [1.0.1]
 
 No code change, re-release only for automated build.

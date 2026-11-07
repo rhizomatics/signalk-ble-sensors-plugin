@@ -74,7 +74,7 @@ test("buildDelta", async (t) => {
     assert.equal(delta.updates[0].$source, "test.ruuvitag");
     assert.deepEqual(delta.updates[0].values, [
       { path: "environment.cabin.temperature", value: 295.15 },
-      { path: "environment.cabin.humidity", value: 0.5 },
+      { path: "environment.cabin.relativeHumidity", value: 0.5 },
     ]);
   });
 
@@ -107,7 +107,7 @@ test("buildMetaDelta", async (t) => {
     assert.equal(meta.updates[0].$source, "test.ruuvitag");
     assert.deepEqual(meta.updates[0].meta, [
       { path: "environment.cabin.temperature", value: { units: "K", description: "Zone's current temperature" } },
-      { path: "environment.cabin.humidity", value: { units: "ratio", description: "Zone's current humidity" } },
+      { path: "environment.cabin.relativeHumidity", value: { units: "ratio", description: "Zone's current relative humidity" } },
     ]);
   });
 
