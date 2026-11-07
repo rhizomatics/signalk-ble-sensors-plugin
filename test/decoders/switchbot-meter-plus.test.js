@@ -49,9 +49,11 @@ test("switchbot-meter-plus decode", async (t) => {
     assert.equal(values.battStrength, 0.75);
   });
 
-  await t.test("converts Fahrenheit to Kelvin when the unit flag is set", () => {
-    const values = meterPlus.decode(adv({ sd: buildServiceData({ sign: 1, intPart: 98, fracDigit: 6, fahrenheit: true }) }));
-    assert.equal(Math.round(values.temp * 100) / 100, 310.15); // 98.6F == 37.0C == 310.15K
+  await t.test("still reads Celsius when the meter's display is set to Fahrenheit", () => {
+    // The flag is only the display unit; the broadcast value stays Celsius.
+    const values = meterPlus.decode(adv({ sd: buildServiceData({ sign: 1, intPart: 22, fracDigit: 7, fahrenheit: true, humidity: 60 }) }));
+    assert.equal(Math.round(values.temp * 100) / 100, 295.85); // 273.15 + 22.7
+    assert.equal(values.humidity, 0.6);
   });
 
   await t.test("decodes a negative Celsius temperature", () => {

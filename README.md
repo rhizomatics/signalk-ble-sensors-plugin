@@ -35,7 +35,7 @@ For boats that have IP68 RuuviTag Pro outside and RuuviTag inside, it can be han
 | Xiaomi LYWSD03MMC (pvvx/atc1441 custom firmware) | Best-effort — not actively used, contributions welcome |
 | Govee H5074 / H5075                              | Best-effort — not actively used, contributions welcome |
 
-Stock Xiaomi firmware (encrypted, not the ATC/pvvx custom firmware above) isn't supported. Sensors that need a GATT connection to read (Victron, Renogy, most BMS chips, etc.) are out of scope for this plugin. Many of these already have plugins, such as [signalk-bluetti-plugin](https://github.com/rhizomatics/signalk-bluetti-plugin) or [signalk-victron-ble](https://github.com/stefanor/signalk-victron-ble).
+Stock Xiaomi firmware (encrypted, not the ATC/pvvx custom firmware above) isn't supported. On the custom firmware, choose the `custom` (pvvx) or `atc1441` advertising format; `BTHome` isn't decoded yet. Sensors that need a GATT connection to read (Victron, Renogy, most BMS chips, etc.) are out of scope for this plugin. Many of these already have plugins, such as [signalk-bluetti-plugin](https://github.com/rhizomatics/signalk-bluetti-plugin) or [signalk-victron-ble](https://github.com/stefanor/signalk-victron-ble).
 
 ## Configuring a sensor
 

@@ -1,6 +1,6 @@
 {
   "name": "@rhizomatics/signalk-ble-sensors-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Passive BLE sensor listening for SignalK (SwitchBot, RuuviTag, and others) via the SignalK BLE Manager API — no GATT connection required.",
   "keywords": [
     "ble",
