@@ -43,7 +43,7 @@ Stock Xiaomi firmware (encrypted, not the ATC/pvvx custom firmware above) isn't 
 2. Make sure the sensor is powered on and within Bluetooth range for a minute or two.
 3. Open the plugin's configuration page and click **+ Add Item** under "Registered sensors".
 4. Pick the sensor from the **Device** dropdown — it lists every recognised sensor the plugin has seen, labelled with its advertised name, sensor type, and MAC address. If it's not there yet, close the page, wait a bit longer, and reopen it.
-5. Fill in a **Zone / location** (e.g. `cabin`, `fridge`, `engine`) — this becomes part of the SignalK path (`environment.<zone>.temperature`, etc.); dots nest into sub-paths, e.g. `inside.mainCabin` becomes `environment.inside.mainCabin.temperature` — and optionally a **Name override**.
+5. Fill in a **Zone / location** — this becomes part of the SignalK path (`environment.<zone>.temperature`, etc.). The SignalK spec puts indoor zones under `inside`, so use e.g. `inside.mainCabin`, `inside.refrigerator` or `inside.engineRoom` (giving `environment.inside.mainCabin.temperature`), and `outside` for the outside air — and optionally a **Name override**.
 6. Save. Readings should start appearing within a few seconds.
 
 If a sensor measures pressure (currently RuuviTag only), it can optionally also be picked as the **Outside pressure source**
@@ -53,16 +53,16 @@ sensor still needs to be added under "Registered sensors" as usual; picking it h
 
 ## Published paths
 
-| Value            | Path                              | Unit                                |
-| ---------------- | --------------------------------- | ----------------------------------- |
-| Temperature      | `environment.<zone>.temperature`  | K                                   |
-| Humidity         | `environment.<zone>.humidity`     | ratio (0-1)                         |
-| Pressure         | `environment.<zone>.pressure`     | Pa                                  |
-| Battery strength | `sensors.<name>.battery.strength` | ratio (0-1), with low-battery zones |
-| Battery voltage  | `sensors.<name>.battery.voltage`  | V                                   |
-| Signal strength  | `sensors.<name>.RSSI`             | dB                                  |
-| Reachable        | `sensors.<name>.reachable`        | boolean                             |
-| Motion counter   | `sensors.<name>.motionCounter`    | count                               |
+| Value            | Path                                  | Unit                                |
+| ---------------- | ------------------------------------- | ----------------------------------- |
+| Temperature      | `environment.<zone>.temperature`      | K                                   |
+| Humidity         | `environment.<zone>.relativeHumidity` | ratio (0-1)                         |
+| Pressure         | `environment.<zone>.pressure`         | Pa                                  |
+| Battery strength | `sensors.<name>.battery.strength`     | ratio (0-1), with low-battery zones |
+| Battery voltage  | `sensors.<name>.battery.voltage`      | V                                   |
+| Signal strength  | `sensors.<name>.RSSI`                 | dB                                  |
+| Reachable        | `sensors.<name>.reachable`            | boolean                             |
+| Motion counter   | `sensors.<name>.motionCounter`        | count                               |
 
 `<name>` is the sensor's name, lowercased and sanitized — give each registered sensor a distinct name, since
 two sensors with the same name will collide on these paths. Not every sensor publishes every path above — only the values its
