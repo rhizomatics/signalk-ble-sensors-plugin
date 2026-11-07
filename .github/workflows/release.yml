@@ -33,7 +33,9 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: "24"
-          registry-url: "https://registry.npmjs.org"
+          # No registry-url: it makes setup-node write an .npmrc with
+          # _authToken=${NODE_AUTH_TOKEN}, and npm can send that (empty) token
+          # instead of exchanging the OIDC one. npm defaults to registry.npmjs.org.
 
       # Staged publishing needs npm >= 11.15.0.
       - run: npm install -g npm@latest
@@ -62,7 +64,7 @@ jobs:
           PRERELEASE: ${{ github.event.release.prerelease }}
         run: |
           if [ "$PRERELEASE" = "true" ]; then
-            npm stage publish --access public --tag next
+            npm stage publish --provenance --access public --tag next --loglevel verbose
           else
-            npm stage publish --access public
+            npm stage publish --provenance --access public --loglevel verbose
           fi
