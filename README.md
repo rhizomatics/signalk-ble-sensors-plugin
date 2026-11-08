@@ -77,4 +77,10 @@ These path and unit conventions are reused from
 
 ### Bluetooth Issues
 
-There's a long list of of advice and fixes for Bluetooth Low Energy on SignalK at the [eInk Label Bluetooth](https://signalk-einklabel.rhizomatics.org.uk/bluetooth/#ble-manager-readiness) page that covers Bluetti use too, although Bluetti isn't as tricky to work with as some eInk labels.
+There's a long list of advice and fixes for Bluetooth Low Energy on SignalK at the [eInk Label Bluetooth](https://signalk-einklabel.rhizomatics.org.uk/bluetooth/#ble-manager-readiness) page. Much of it is about connecting to devices, which this plugin never does, but the BLE Manager setup and adapter advice applies here too.
+
+#### All sensors go unreachable at once
+
+From SignalK server 2.34.0, the BLE Manager pauses scanning for advertisements while any plugin is connecting to a Bluetooth device (for example signalk-bluetti-plugin or signalk-einklabel-plugin), for up to 60 seconds each time. Normally that's a few seconds and goes unnoticed. But if another plugin keeps failing and retrying a connection, the pauses can add up to more than the 5 minutes this plugin waits before marking a sensor's `sensors.<name>.reachable` as `false`.
+
+So if every sensor shows as unreachable at the same time, check the other Bluetooth plugins' logs and the **Data -> BLE Manager** page for a device stuck reconnecting before you look at the sensors themselves.

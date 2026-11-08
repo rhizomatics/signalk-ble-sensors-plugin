@@ -65,6 +65,13 @@ Each registered sensor also gets a simple no-contact watchdog: if no advertiseme
 `NO_CONTACT_MS` (5 minutes — several times the typical multi-second advertisement interval for these
 sensors), its `reachable` path is set `false`.
 
+Since server 2.34.0 (signalk-server#3089) the local BLE provider pauses discovery while _any_ plugin sets
+up a GATT connection — from `Connect` until services resolve, capped at 60s per pause — so other plugins'
+connects (bluetti, einklabel, ...) cause gaps in this plugin's advertisement stream. Normally a few seconds
+and well inside `NO_CONTACT_MS`, but a device stuck in a connect/retry loop elsewhere can chain enough pauses
+to trip the watchdog on otherwise-healthy sensors. If `reachable` flaps to `false` for every sensor at
+once, look at other plugins' GATT connects before suspecting this plugin or the sensors.
+
 A registered sensor whose decoder declares `providesPressure: true` (currently only `ruuvitag`) can
 optionally be designated the plugin-level `outsidePressureSource` (a MAC, set via the config screen's
 top-level dropdown — see "Config screen"). Its pressure reading is then cross-published to
@@ -150,13 +157,14 @@ entry — so the schema description says so explicitly.
 
 ### Why BLE-Manager-only
 
-Unlike `signalk-bluetti-plugin` (this repo's sibling, which owns a direct BlueZ D-Bus connection because it
-needs a stateful GATT session per device), this plugin only ever reads advertisement broadcasts, which the
-BLE Manager API already merges from every registered provider. There's no reason to duplicate that with a
-second, direct BlueZ scan path — it would just mean two things racing to open the adapter. This is a
-different tradeoff than the bluetti plugin's `useBleManagerApi` opt-in (which defaults off pending a known
-BlueZ GATT-resolution race in the server's local provider): that race is a GATT concern, and this plugin
-never opens a GATT connection at all.
+Unlike `signalk-bluetti-plugin` (this repo's sibling, which keeps a direct BlueZ D-Bus connection as a
+fallback because it needs a stateful GATT session per device), this plugin only ever reads advertisement
+broadcasts, which the BLE Manager API already merges from every registered provider. There's no reason to
+duplicate that with a second, direct BlueZ scan path — it would just mean two things racing to open the
+adapter. The bluetti plugin's `useBleManagerApi` option (default on since its 2.2.0, with the direct path
+kept for servers without the BLE Manager or for a known-but-disputed `WriteValue` GATT error) is a GATT
+concern, and this plugin never opens a GATT connection at all — so the server's GATT-side BLE fixes (2.34.0:
+bounded `connectGATT()`, cancellable/auto-released claims; 2.35.0: clean plugin shutdown) don't touch it.
 
 ### Relationship to bt-sensors-plugin-sk
 
