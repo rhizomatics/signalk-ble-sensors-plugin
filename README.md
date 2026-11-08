@@ -4,7 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/@rhizomatics/signalk-ble-sensors-plugin.svg)](https://www.npmjs.com/package/@rhizomatics/signalk-ble-sensors-plugin)
 [![code style: oxfmt](https://img.shields.io/badge/code_style-oxfmt-blue.svg)](https://github.com)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/rhizomatics/signalk-ble-sensors-plugin./blob/main/LICENSE)
-[![boat tech directory](https://boat-tech-directory.rhizomatics.org.uk/images/badge.svg)](https://boat-tech-directory.rhizomatics.org.uk)
+[![boat tech directory](https://boat-tech-directory.rhizomatics.org.uk/images/badge.svg)](https://boat-tech-directory.rhizomatics.org.uk) [![managed by hq](https://raw.githubusercontent.com/rhizomatics/hq/main/assets/badge-managed-by-hq.svg)](https://github.com/rhizomatics/hq)
 
 This is a limited replacement for `bt-sensors-plugin-sk` that has SignalK BLE Manager support, with only a few sensors known to work and passive only BLE integration. It may work for other sensors not listed here, and PRs welcome to add or correct support.
 
