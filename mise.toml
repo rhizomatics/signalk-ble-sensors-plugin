@@ -2,4 +2,4 @@
 gh = "latest"
 node = "24"
 npm = "latest"
-pre-commit = "latest"
+prek = "latest"
