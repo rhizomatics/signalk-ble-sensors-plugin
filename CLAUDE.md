@@ -164,7 +164,7 @@ duplicate that with a second, direct BlueZ scan path — it would just mean two 
 adapter. The bluetti plugin's `useBleManagerApi` option (default on since its 2.2.0, with the direct path
 kept for servers without the BLE Manager or for a known-but-disputed `WriteValue` GATT error) is a GATT
 concern, and this plugin never opens a GATT connection at all — so the server's GATT-side BLE fixes (2.34.0:
-bounded `connectGATT()`, cancellable/auto-released claims; 2.35.0: clean plugin shutdown) don't touch it.
+bounded `connectGATT()`, releasable pending and auto-released claims; 2.35.0: clean plugin shutdown) don't touch it.
 
 ### Relationship to bt-sensors-plugin-sk
 
