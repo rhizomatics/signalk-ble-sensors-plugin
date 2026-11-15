@@ -44,7 +44,7 @@
     "test:coverage": "node --experimental-test-coverage --test-coverage-include=\"lib/**/*.js\" --test-coverage-exclude=\"lib/sensor-manager.js\" --test-coverage-lines=80 --test-coverage-branches=80 --test-coverage-functions=80 --test"
   },
   "devDependencies": {
-    "oxfmt": "^0.76.0",
+    "oxfmt": "^0.77.0",
     "oxlint": "^1.91.0"
   },
   "engines": {
